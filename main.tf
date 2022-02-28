@@ -2,7 +2,7 @@ provider "aws" {
   region = var.region
 }
 
-data "aws_availability_zone" "available" {
+data "aws_availability_zones" "available" {
   state = "available"
 }
 
@@ -13,7 +13,7 @@ module "vpc" {
   name = "canary-rolling-deployment"
   cidr = var.vpc_cidr_block
 
-  azs             = data.aws_availability_zone.available.name
+  azs             = data.aws_availability_zones.available.names
   private_subnets = var.private_subnet_cidr_blocks
   public_subnets  = var.public_subnet_cidr_blocks
 
