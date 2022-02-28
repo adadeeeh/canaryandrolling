@@ -31,3 +31,27 @@ module "http_80_security_group" {
 
   ingress_cidr_blocks = ["0.0.0.0/0"]
 }
+
+module "lb_security_group" {
+  source  = "terraform-aws-modules/security-group/aws//modules/http-80"
+  version = "~> 4.0"
+
+  name        = "lb-sg"
+  description = "Security group for web servers with HTTP ports open within VPC"
+  vpc_id      = module.vpc.vpc_id
+
+  ingress_cidr_blocks = ["0.0.0.0/0"]
+}
+
+module "alb" {
+  source  = "terraform-aws-modules/alb/aws"
+  version = "~> 6.0"
+
+  name = "alb-${module.vpc.name}"
+
+  load_balancer_type = "application"
+
+  vpc_id          = module.vpc.vpc_id
+  subnets         = module.vpc.public_subnets
+  security_groups = [module.lb_security_group.security_group_id]
+}
