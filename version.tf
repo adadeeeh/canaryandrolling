@@ -10,9 +10,8 @@ terraform {
       version = "3.1.0"
     }
   }
-
-  required_providers = "~> 0.1.4"
-
+  required_version = ">= 1.1.0"
+  
   cloud {
     organization = "YtseJam"
 
