@@ -11,7 +11,7 @@ terraform {
     }
   }
 
-  required_providers = "~> 0.14"
+  required_providers = "~> 0.1.4"
 
   cloud {
     organization = "YtseJam"
