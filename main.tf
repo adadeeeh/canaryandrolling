@@ -13,7 +13,7 @@ module "vpc" {
   name = "canary-rolling-deployment"
   cidr = var.vpc_cidr_block
 
-  azs             = data.aws_availability_zone.available.names
+  azs             = data.aws_availability_zone.available.name
   private_subnets = var.private_subnet_cidr_blocks
   public_subnets  = var.public_subnet_cidr_blocks
 
