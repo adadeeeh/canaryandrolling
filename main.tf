@@ -21,12 +21,12 @@ module "vpc" {
   enable_vpn_gateway = false
 }
 
-module "app_security_group" {
-  source  = "terraform-aws-modules/security-group/aws//modules/web"
+module "http_80_security_group" {
+  source  = "terraform-aws-modules/security-group/aws//modules/http-80"
   version = "~> 4.0"
 
   name        = "web-sg"
-  description = "Security griyp for web servers with HTTP ports open within VPC"
+  description = "Security group for web servers with HTTP ports open within VPC"
   vpc_id      = module.vpc.vpc_id
 
   ingress_cidr_blocks = ["0.0.0.0/0"]
