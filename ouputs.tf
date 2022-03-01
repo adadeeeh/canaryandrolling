@@ -13,11 +13,26 @@ output "web_sg_id" {
   value       = module.web_sg.security_group_id
 }
 
-output "target_group_arn" {
+output "tg_blue_arn" {
   description = "ALB target group ARN"
-  value       = aws_lb_target_group.http.arn
+  value       = aws_lb_target_group.blue.arn
+}
+
+output "tg_green_arn" {
+  description = "ALB target group ARN"
+  value       = aws_lb_target_group.green.arn
 }
 
 output "lb_dns_name" {
   value = module.alb.lb_dns_name
+}
+
+output "blue_weight" {
+  description = "Blue target group weight"
+  value       = lookup(local.traffic_dist_map[var.traffic_distribution], "blue", 100)
+}
+
+output "green_weight" {
+  description = "Green target group weight"
+  value       = lookup(local.traffic_dist_map[var.traffic_distribution], "green", 0)
 }
