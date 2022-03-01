@@ -13,15 +13,15 @@ output "web_sg_id" {
   value       = module.web_sg.security_group_id
 }
 
-# output "tg_blue_arn" {
-#   description = "ALB target group ARN"
-#   value       = aws_lb_target_group.blue.arn
-# }
+output "tg_blue_arn" {
+  description = "ALB target group ARN"
+  value       = aws_lb_target_group.blue.arn
+}
 
-# output "tg_green_arn" {
-#   description = "ALB target group ARN"
-#   value       = aws_lb_target_group.green.arn
-# }
+output "tg_green_arn" {
+  description = "ALB target group ARN"
+  value       = aws_lb_target_group.green.arn
+}
 
 output "lb_dns_name" {
   value = module.alb.lb_dns_name
