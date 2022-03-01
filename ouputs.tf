@@ -17,3 +17,7 @@ output "target_group_arn" {
   description = "ALB target group ARN"
   value       = aws_lb_target_group.http.arn
 }
+
+output "lb_dns_name" {
+  value = module.alb.lb_dns_name
+}
