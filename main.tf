@@ -70,7 +70,7 @@ resource "aws_lb_target_group" "http" {
   }
 }
 
-resource "aws_lb_listener" "http" {
+resource "aws_lb_listener" "HTTP" {
   load_balancer_arn = module.alb.lb_arn
   port              = "80"
   protocol          = "HTTP"
