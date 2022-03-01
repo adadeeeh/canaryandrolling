@@ -26,3 +26,13 @@ output "tg_green_arn" {
 output "lb_dns_name" {
   value = module.alb.lb_dns_name
 }
+
+output "blue_weight" {
+  description = "Blue target group weight"
+  value       = lookup(local.traffic_dist_map[var.traffic_distribution], "blue", 100)
+}
+
+output "green_weight" {
+  description = "Green target group weight"
+  value       = lookup(local.traffic_dist_map[var.traffic_distribution], "green", 0)
+}
