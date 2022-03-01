@@ -21,7 +21,7 @@ module "vpc" {
   enable_vpn_gateway = false
 }
 
-module "http_80_security_group" {
+module "web_sg" {
   source  = "terraform-aws-modules/security-group/aws//modules/http-80"
   version = "~> 4.0"
 
@@ -32,7 +32,7 @@ module "http_80_security_group" {
   ingress_cidr_blocks = ["0.0.0.0/0"]
 }
 
-module "lb_security_group" {
+module "lb_sg" {
   source  = "terraform-aws-modules/security-group/aws//modules/http-80"
   version = "~> 4.0"
 
@@ -53,7 +53,7 @@ module "alb" {
 
   vpc_id          = module.vpc.vpc_id
   subnets         = module.vpc.public_subnets
-  security_groups = [module.lb_security_group.security_group_id]
+  security_groups = [module.lb_sg.security_group_id]
 }
 
 resource "aws_lb_target_group" "http" {
