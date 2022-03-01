@@ -57,7 +57,7 @@ module "alb" {
 }
 
 resource "aws_lb_target_group" "blue" {
-  name     = "tg-blue-${module.vpc.name}"
+  name     = "blue-${module.vpc.name}"
   port     = 80
   protocol = "HTTP"
   vpc_id   = module.vpc.vpc_id
@@ -71,7 +71,7 @@ resource "aws_lb_target_group" "blue" {
 }
 
 resource "aws_lb_target_group" "green" {
-  name     = "tg-green-${module.vpc.name}"
+  name     = "green-${module.vpc.name}"
   port     = 80
   protocol = "HTTP"
   vpc_id   = module.vpc.vpc_id
