@@ -12,7 +12,7 @@ This terraform configuration is used to create the network of [this server](http
 3. Create github secrets `GITHUB_TOKEN`.
 4. For production used, create branch rule to protect main branch and enable require status checks to pass before merging.
 5. Allow remote state access by navigating to "Settings" page, under "General" tab. Scroll to the "remote state sharing" section.
-6. Edit variavle `traffic_distribution` according to `traffic_dist_map` to to configure the load balancer weight.
+6. Edit variavle `traffic_distribution` according to `traffic_dist_map` to configure the load balancer weight.
 
 # References
 
